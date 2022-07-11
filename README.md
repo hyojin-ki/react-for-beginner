@@ -1,5 +1,6 @@
 # Getting Started with Create React App
 
+ReactJS로 영화 웹 서비스 만들기 연습
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
