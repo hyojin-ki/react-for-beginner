@@ -1,0 +1,40 @@
+<!--3.4 State Function -->
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="root"></div>
+    </body>    
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js" ></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        const root = document.getElementById("root");
+        function App() {
+            // counter는 다른곳에서 업데이트 될 수 있음
+            // 즉, counter가 다른곳에서 변경되어 내가 생각했던 것과 다르게 값이 나올 수 있음
+            //      예) 이전 단계의 state를 이용해서 현재 state를 변경시, 결과가 예상과 다를 수 있음
+            // state를 변경하는 방법은 다음과 같이 2가지 방법이 있음
+            let [counter, setCounter] = React.useState(0);
+            function onClick() {
+                // 원본
+                // setCounter(counter + 1);
+
+                // 1. 원하는 값 직접입력
+                //      setCounter(123); 
+                //      setCounter('lalala');
+                
+                // 2. 이전 값을 이용해서 현재값 계산 (추천)
+                //      아래 함수의 첫번째 argument는 현재 값
+                //      이 함수의 return값이 새로운 state가 됨
+                setCounter(current => current + 1);
+            };
+            return(
+                <div>
+                    <h3>Total clicks: {counter}</h3>
+                    <button onClick={onClick}>Click me</button>
+                </div>
+            );
+        };
+        ReactDOM.render(<App />, root);
+    </script>
+</html>
