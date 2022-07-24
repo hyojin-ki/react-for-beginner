@@ -1,0 +1,44 @@
+<!--4.0 Props -->
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="root"></div>
+    </body>        
+    <script src="https://unpkg.com/react@17/umd/react.production.min.js" ></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.production.min.js" ></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        const root = document.getElementById("root");
+        function Btn(props) { // props는 첫 번째이자 Btn이 전달받는 유일한 인자(argument). 두번째는 없음
+            // shortcut으로 하려면 props 대신에 Btn({text})라고 쓰고
+            // {props.text} 부분을 {text}로 바꾸면 됨
+            // 특정한 속성 여러개를 받을 수도 있음
+            //  {text, big}
+            console.log(props);
+            return(
+                <button style={{
+                    backgroundColor: "tomato",
+                    color: "white",
+                    padding: "10px 20px",
+                    border: 0,
+                    borderRadius: 10,
+                    fontSize: props.big ? 18 : 16,
+                }}>
+                    {props.text}
+                </button>
+            );
+        };
+        function App() {
+            // Btn은 함수(컴포넌트)이기 때문에 아래와 같이 표현할 수 있음
+            //      text는 내가 정한 속성으로 임의의 값으로 명명해도 됨
+            // Btn({text:"Save Changes"})             
+            return(
+                <div>                                      
+                    <Btn text="Save Changes" big={true} />  
+                    <Btn text="Continue" big={false}/>                                        
+                </div>
+            );
+        };
+        ReactDOM.render(<App />, root);
+    </script>
+</html>
